@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Create student</title>
+</head>
+<body>
+<form action="#" th:action="@{/student-update}" th:object="${student}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="firstName">First name</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+    <br/>
+    <label for="lastName">Last name</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+    <br/>
+    <label for="department_id">Department ID</label>
+    <select th:field="*{department_id}">
+        <option th:each="d: ${departments}" th:text="${d.title}" th:value="${d.id}">
+            ${d.id}
+        </option>
+    </select>
+    <br/>
+    <input type="submit" value="Update student">
+</form>
+</body>
+</html>
